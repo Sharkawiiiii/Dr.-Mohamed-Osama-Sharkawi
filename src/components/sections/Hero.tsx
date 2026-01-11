@@ -32,8 +32,8 @@ export default function Hero() {
             </div>
 
             {/* Content - uses min-height instead of fixed height */}
-            <div className="relative z-30 min-h-screen flex flex-col">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 pb-16 sm:mt-16 sm:pt-10 md:mt-16 md:pt-12 lg:mt-20 lg:pt-16 lg:pb-20">
+            <div className="relative z-30 min-h-screen flex flex-col pt-16 sm:pt-16 lg:pt-20">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
                     <div className="max-w-7xl mx-auto">
                         {/* Main content - Flexbox layout for better control */}
                         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 lg:gap-16">
