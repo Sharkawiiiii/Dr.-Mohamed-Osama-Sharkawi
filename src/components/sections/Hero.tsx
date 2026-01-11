@@ -33,10 +33,10 @@ export default function Hero() {
 
             {/* Content - uses min-height instead of fixed height */}
             <div className="relative z-30 min-h-screen flex flex-col">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 sm:pt-36 md:pt-40 lg:pt-48 lg:pb-20">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 pb-16 sm:mt-16 sm:pt-10 md:mt-16 md:pt-12 lg:mt-20 lg:pt-16 lg:pb-20">
                     <div className="max-w-7xl mx-auto">
                         {/* Main content - Flexbox layout for better control */}
-                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-16">
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 lg:gap-16">
 
                             {/* Text content */}
                             <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
