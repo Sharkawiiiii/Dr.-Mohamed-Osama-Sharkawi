@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { getImagePath } from "@/lib/imagePath";
 
 // Dynamically import 3D background to avoid SSR issues
 const HeroBackground = dynamic(() => import("./HeroBackground"), {
@@ -190,7 +191,7 @@ export default function Hero() {
                                     {/* Image container - uses natural aspect ratio */}
                                     <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-white/50">
                                         <Image
-                                            src="/images/doctor.jpg"
+                                            src={getImagePath("/images/doctor.jpg")}
                                             alt="Dr. Mohamed Osama Sharkawi"
                                             width={420}
                                             height={560}

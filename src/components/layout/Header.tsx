@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { getImagePath } from "@/lib/imagePath";
 
 const navLinks = [
     { href: "#about", label: "About" },
@@ -33,8 +34,8 @@ export default function Header() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                    ? "bg-white shadow-lg py-2"
-                    : "bg-white/95 backdrop-blur-sm py-3"
+                ? "bg-white shadow-lg py-2"
+                : "bg-white/95 backdrop-blur-sm py-3"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +48,7 @@ export default function Header() {
                             className="relative w-12 h-12 flex-shrink-0"
                         >
                             <Image
-                                src="/images/logo.png"
+                                src={getImagePath("/images/logo.png")}
                                 alt="PT Acupuncture Logo"
                                 fill
                                 className="object-contain"

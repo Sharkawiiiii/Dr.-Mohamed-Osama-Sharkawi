@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import { Award, Users, BookOpen, Building2 } from "lucide-react";
+import { getImagePath } from "@/lib/imagePath";
 
 const stats = [
     {
@@ -126,7 +127,7 @@ export default function About() {
                         <div className="relative pb-8 pr-8">
                             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                                 <Image
-                                    src="/images/doctor.jpg"
+                                    src={getImagePath("/images/doctor.jpg")}
                                     alt="Dr. Mohamed Osama Sharkawi"
                                     width={600}
                                     height={750}
