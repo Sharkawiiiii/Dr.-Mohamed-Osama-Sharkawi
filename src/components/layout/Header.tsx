@@ -34,18 +34,18 @@ export default function Header() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                ? "bg-white shadow-lg py-2"
-                : "bg-white/95 backdrop-blur-sm py-3"
+                ? "bg-white/95 backdrop-blur-md shadow-sm py-1"
+                : "bg-white/80 backdrop-blur-sm py-2"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+                <div className="flex items-center justify-between h-12 sm:h-14">
                     {/* Logo with Image and Text */}
-                    <Link href="/" className="flex items-center gap-3 group">
+                    <Link href="/" className="flex items-center gap-2 group">
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.3 }}
-                            className="relative w-12 h-12 flex-shrink-0"
+                            className="relative w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0"
                         >
                             <Image
                                 src={getImagePath("/images/logo.png")}
@@ -56,12 +56,12 @@ export default function Header() {
                             />
                         </motion.div>
                         <div className="flex flex-col">
-                            <span className="font-bold text-lg leading-tight">
+                            <span className="font-bold text-sm sm:text-base leading-tight">
                                 <span className="text-orange-500">PT</span>{" "}
                                 <span className="text-teal-600">ACUPUNCTURE</span>
                             </span>
-                            <span className="text-[11px] text-gray-500 font-medium hidden sm:block">
-                                Dr. Mohamed Osama Sharkawi
+                            <span className="text-[10px] text-gray-500 font-medium hidden sm:block">
+                                Dr. Mohamed Sharkawi
                             </span>
                         </div>
                     </Link>
@@ -77,7 +77,7 @@ export default function Header() {
                             >
                                 <Link
                                     href={link.href}
-                                    className="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-teal-600 transition-colors group"
+                                    className="relative px-3 py-1.5 text-xs font-medium text-gray-600 hover:text-teal-600 transition-colors group"
                                 >
                                     {link.label}
                                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-teal-500 to-blue-500 group-hover:w-3/4 transition-all duration-300 rounded-full" />
@@ -95,7 +95,7 @@ export default function Header() {
                     >
                         <Link
                             href="#contact"
-                            className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-sm font-semibold rounded-full shadow-md shadow-teal-500/25 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-xs font-semibold rounded-full shadow-md shadow-teal-500/25 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                         >
                             Book Consultation
                         </Link>
