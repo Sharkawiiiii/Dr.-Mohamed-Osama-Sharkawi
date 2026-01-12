@@ -221,21 +221,56 @@ export default function About() {
                             </motion.span>
                         </h3>
 
-                        <div className="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg">
-                            <p>
-                                A distinguished <strong className="text-teal-600">Egyptian physical therapist and licensed acupuncturist</strong> with{" "}
-                                <strong className="text-gray-900">over 17 years</strong> of expertise in orthopedic rehabilitation and medical acupuncture.
+                        <div className="space-y-5 text-gray-600 leading-relaxed text-base sm:text-lg text-justify">
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                            >
+                                {"A distinguished ".split(" ").map((word, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
+                                        className="inline-block mr-1"
+                                    >
+                                        {word}
+                                    </motion.span>
+                                ))}
+                                <strong className="text-teal-600">Egyptian physical therapist and licensed acupuncturist</strong>{" "}
+                                {"with over ".split(" ").map((word, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.3, delay: 0.6 + i * 0.05 }}
+                                        className="inline-block mr-1"
+                                    >
+                                        {word}
+                                    </motion.span>
+                                ))}
+                                <strong className="text-gray-900">17 years</strong>{" "}
+                                of expertise in orthopedic rehabilitation and medical acupuncture.
                                 Dr. Sharkawi has established himself as a leading figure in integrating evidence-based acupuncture within
                                 modern physiotherapy practice, training <strong className="text-gray-900">thousands of healthcare professionals</strong> across
                                 Egypt and internationally.
-                            </p>
-                            <p>
+                            </motion.p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.8, delay: 0.6 }}
+                            >
                                 As the <strong className="text-teal-600">founder and co-founder of 12 MSK medical centers</strong>,
                                 his clinical approach uniquely bridges traditional acupuncture techniques with contemporary rehabilitative medicine.
                                 Currently serving as a <strong className="text-gray-900">Senior Physiotherapist</strong> at the Ministry of Health, Egypt,
                                 and an <strong className="text-gray-900">Acupuncture Instructor</strong> with PRIMEPHYSIO (UK),
                                 Dr. Sharkawi continues to advance the field through both clinical excellence and professional education.
-                            </p>
+                            </motion.p>
                         </div>
 
                         {/* Credentials list */}
