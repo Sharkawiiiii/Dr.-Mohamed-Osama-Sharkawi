@@ -36,10 +36,10 @@ export default function Hero() {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
                     <div className="max-w-7xl mx-auto">
                         {/* Main content - Flexbox layout for better control */}
-                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 lg:gap-16">
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-16">
 
-                            {/* Text content */}
-                            <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+                            {/* Text content - shows first on mobile */}
+                            <div className="flex-1 text-center lg:text-left order-1 lg:order-1">
                                 {/* Pre-title badge */}
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
@@ -181,7 +181,7 @@ export default function Hero() {
                                 initial={{ opacity: 0, scale: 0.95 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1, delay: 0.8 }}
-                                className="flex-shrink-0 order-1 lg:order-2 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] xl:max-w-[420px] mx-auto lg:mx-0"
+                                className="flex-shrink-0 order-2 lg:order-2 w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] xl:max-w-[420px] mx-auto lg:mx-0"
                             >
                                 <div className="relative">
                                     {/* Decorative rings */}
