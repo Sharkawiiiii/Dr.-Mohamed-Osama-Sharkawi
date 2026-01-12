@@ -6,19 +6,22 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { getImagePath } from "@/lib/imagePath";
-
-const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#expertise", label: "Expertise" },
-    { href: "#experience", label: "Experience" },
-    { href: "#education", label: "Education" },
-    { href: "#teaching", label: "Teaching" },
-    { href: "#contact", label: "Contact" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 
 export default function Header() {
+    const { t, isRTL } = useLanguage();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const navLinks = [
+        { href: "#about", label: t.nav.about },
+        { href: "#expertise", label: t.nav.expertise },
+        { href: "#experience", label: t.nav.experience },
+        { href: "#education", label: t.nav.education },
+        { href: "#teaching", label: t.nav.teaching },
+        { href: "#contact", label: t.nav.contact },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,13 +94,14 @@ export default function Header() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
-                        className="hidden lg:block"
+                        className="hidden lg:flex items-center gap-3"
                     >
+                        <LanguageToggle />
                         <Link
                             href="#contact"
                             className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white text-xs font-semibold rounded-full shadow-md shadow-teal-500/25 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                         >
-                            Book Consultation
+                            {t.nav.bookConsultation}
                         </Link>
                     </motion.div>
 
@@ -155,8 +159,11 @@ export default function Header() {
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="block w-full text-center px-5 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-semibold rounded-xl shadow-md"
                                 >
-                                    Book Consultation
+                                    {t.nav.bookConsultation}
                                 </Link>
+                                <div className="mt-3 flex justify-center">
+                                    <LanguageToggle />
+                                </div>
                             </motion.div>
                         </nav>
                     </motion.div>

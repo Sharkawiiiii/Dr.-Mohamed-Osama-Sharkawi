@@ -6,6 +6,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { getImagePath } from "@/lib/imagePath";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Dynamically import 3D background to avoid SSR issues
 const HeroBackground = dynamic(() => import("./HeroBackground"), {
@@ -16,6 +17,7 @@ const HeroBackground = dynamic(() => import("./HeroBackground"), {
 });
 
 export default function Hero() {
+    const { t, isRTL } = useLanguage();
     return (
         <section
             id="hero"
@@ -47,9 +49,9 @@ export default function Hero() {
                                     transition={{ duration: 0.6, delay: 0.2 }}
                                     className="mb-6 lg:mb-8"
                                 >
-                                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-teal-50 to-blue-50 text-teal-700 text-sm font-medium border border-teal-200/50 shadow-sm">
+                                    <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-teal-50 to-blue-50 text-teal-700 text-sm font-medium border border-teal-200/50 shadow-sm ${isRTL ? 'font-arabic' : ''}`}>
                                         <Sparkles className="w-4 h-4 text-teal-500" />
-                                        Licensed Acupuncturist – CACMS Beijing
+                                        {t.hero.badge}
                                     </span>
                                 </motion.div>
 
@@ -59,46 +61,79 @@ export default function Hero() {
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                 >
-                                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-900">
-                                        {"Dr. Mohamed".split("").map((char, index) => (
+                                    <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-900 ${isRTL ? 'font-arabic' : ''}`}>
+                                        {isRTL ? (
                                             <motion.span
-                                                key={index}
-                                                initial={{ opacity: 0, y: 30, rotateX: -90 }}
-                                                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                                                initial={{ opacity: 0, y: 30 }}
+                                                animate={{ opacity: 1, y: 0 }}
                                                 transition={{
-                                                    duration: 0.4,
-                                                    delay: 0.5 + index * 0.05,
+                                                    duration: 0.6,
+                                                    delay: 0.5,
                                                     ease: [0.215, 0.61, 0.355, 1]
                                                 }}
-                                                className="inline-block"
-                                                style={{ display: 'inline-block' }}
                                             >
-                                                {char === " " ? "\u00A0" : char}
+                                                {t.hero.name1}
                                             </motion.span>
-                                        ))}
+                                        ) : (
+                                            t.hero.name1.split("").map((char, index) => (
+                                                <motion.span
+                                                    key={index}
+                                                    initial={{ opacity: 0, y: 30, rotateX: -90 }}
+                                                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                                                    transition={{
+                                                        duration: 0.4,
+                                                        delay: 0.5 + index * 0.05,
+                                                        ease: [0.215, 0.61, 0.355, 1]
+                                                    }}
+                                                    className="inline-block"
+                                                    style={{ display: 'inline-block' }}
+                                                >
+                                                    {char === " " ? "\u00A0" : char}
+                                                </motion.span>
+                                            ))
+                                        )}
                                     </h1>
-                                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mt-1 sm:mt-2">
-                                        {"Osama Sharkawi".split("").map((char, index) => (
+                                    <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight mt-1 sm:mt-2 ${isRTL ? 'font-arabic' : ''}`}>
+                                        {isRTL ? (
                                             <motion.span
-                                                key={index}
-                                                initial={{ opacity: 0, y: 40, scale: 0.5 }}
+                                                initial={{ opacity: 0, y: 40, scale: 0.9 }}
                                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                                 transition={{
-                                                    duration: 0.5,
-                                                    delay: 1.0 + index * 0.06,
+                                                    duration: 0.6,
+                                                    delay: 0.8,
                                                     ease: [0.215, 0.61, 0.355, 1]
                                                 }}
-                                                className="inline-block"
                                                 style={{
-                                                    display: 'inline-block',
                                                     backgroundImage: "linear-gradient(135deg, #F5A623 0%, #E85D04 30%, #0D9488 70%, #2563EB 100%)",
                                                     WebkitBackgroundClip: "text",
                                                     WebkitTextFillColor: "transparent",
                                                 }}
                                             >
-                                                {char === " " ? "\u00A0" : char}
+                                                {t.hero.name2}
                                             </motion.span>
-                                        ))}
+                                        ) : (
+                                            t.hero.name2.split("").map((char, index) => (
+                                                <motion.span
+                                                    key={index}
+                                                    initial={{ opacity: 0, y: 40, scale: 0.5 }}
+                                                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                    transition={{
+                                                        duration: 0.5,
+                                                        delay: 1.0 + index * 0.06,
+                                                        ease: [0.215, 0.61, 0.355, 1]
+                                                    }}
+                                                    className="inline-block"
+                                                    style={{
+                                                        display: 'inline-block',
+                                                        backgroundImage: "linear-gradient(135deg, #F5A623 0%, #E85D04 30%, #0D9488 70%, #2563EB 100%)",
+                                                        WebkitBackgroundClip: "text",
+                                                        WebkitTextFillColor: "transparent",
+                                                    }}
+                                                >
+                                                    {char === " " ? "\u00A0" : char}
+                                                </motion.span>
+                                            ))
+                                        )}
                                     </h1>
                                 </motion.div>
 
@@ -109,11 +144,11 @@ export default function Hero() {
                                     transition={{ duration: 0.6, delay: 0.9 }}
                                     className="mt-4 sm:mt-6 mb-6 sm:mb-8"
                                 >
-                                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                                        Physical Therapy Specialist
+                                    <p className={`text-lg sm:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed ${isRTL ? 'font-arabic' : ''}`}>
+                                        {t.hero.subtitle1}
                                         <br />
                                         <span className="text-teal-600 font-normal">
-                                            in Acupuncture Techniques
+                                            {t.hero.subtitle2}
                                         </span>
                                     </p>
                                 </motion.div>
@@ -125,17 +160,13 @@ export default function Hero() {
                                     transition={{ duration: 0.6, delay: 1.1 }}
                                     className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6 sm:mb-8"
                                 >
-                                    {[
-                                        "DPT (Orthopedics)",
-                                        "BMAS Member",
-                                        "PRIMEPHYSIO Instructor",
-                                    ].map((credential, index) => (
+                                    {t.hero.credentials.map((credential, index) => (
                                         <motion.span
                                             key={credential}
                                             initial={{ opacity: 0, scale: 0.9 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
-                                            className="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-xs sm:text-sm text-gray-600 border border-gray-200 shadow-sm font-medium"
+                                            className={`px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-lg text-xs sm:text-sm text-gray-600 border border-gray-200 shadow-sm font-medium ${isRTL ? 'font-arabic' : ''}`}
                                         >
                                             {credential}
                                         </motion.span>
@@ -147,10 +178,9 @@ export default function Hero() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 0.8, delay: 1.4 }}
-                                    className="text-sm sm:text-base text-gray-500 mb-8 sm:mb-10 italic max-w-lg mx-auto lg:mx-0"
+                                    className={`text-sm sm:text-base text-gray-500 mb-8 sm:mb-10 italic max-w-lg mx-auto lg:mx-0 ${isRTL ? 'font-arabic' : ''}`}
                                 >
-                                    &ldquo;Advancing Musculoskeletal Care Through Evidence-Based
-                                    Acupuncture&rdquo;
+                                    &ldquo;{t.hero.quote}&rdquo;
                                 </motion.p>
 
                                 {/* CTA Buttons */}
@@ -162,16 +192,16 @@ export default function Hero() {
                                 >
                                     <Link
                                         href="#expertise"
-                                        className="group inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 bg-gradient-to-r from-teal-500 via-teal-600 to-blue-600 text-white font-semibold rounded-full shadow-lg shadow-teal-500/30 hover:shadow-xl hover:shadow-teal-500/40 transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base"
+                                        className={`group inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 bg-gradient-to-r from-teal-500 via-teal-600 to-blue-600 text-white font-semibold rounded-full shadow-lg shadow-teal-500/30 hover:shadow-xl hover:shadow-teal-500/40 transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base ${isRTL ? 'font-arabic' : ''}`}
                                     >
-                                        <span>View Expertise</span>
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        <span>{t.hero.viewExpertise}</span>
+                                        <ArrowRight className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isRTL ? 'rotate-180' : ''}`} />
                                     </Link>
                                     <Link
                                         href="#contact"
-                                        className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 bg-white text-gray-700 font-semibold rounded-full border-2 border-gray-200 hover:border-teal-300 hover:text-teal-600 shadow-sm hover:shadow-md transition-all duration-300 text-sm sm:text-base"
+                                        className={`inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 bg-white text-gray-700 font-semibold rounded-full border-2 border-gray-200 hover:border-teal-300 hover:text-teal-600 shadow-sm hover:shadow-md transition-all duration-300 text-sm sm:text-base ${isRTL ? 'font-arabic' : ''}`}
                                     >
-                                        <span>Book Consultation</span>
+                                        <span>{t.hero.bookConsultation}</span>
                                     </Link>
                                 </motion.div>
                             </div>
@@ -207,15 +237,15 @@ export default function Hero() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 1.5, duration: 0.6 }}
-                                        className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-white rounded-xl sm:rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100"
+                                        className={`absolute -bottom-3 sm:-bottom-4 bg-white rounded-xl sm:rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 ${isRTL ? '-right-3 sm:-right-4' : '-left-3 sm:-left-4'}`}
                                     >
                                         <div className="flex items-center gap-2 sm:gap-3">
                                             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-r from-teal-500 to-blue-500 flex items-center justify-center">
-                                                <span className="text-white font-bold text-base sm:text-lg">17+</span>
+                                                <span className="text-white font-bold text-base sm:text-lg">+17</span>
                                             </div>
-                                            <div>
-                                                <div className="text-xs sm:text-sm font-bold text-gray-900">Years</div>
-                                                <div className="text-[10px] sm:text-xs text-gray-500">Experience</div>
+                                            <div className={isRTL ? 'font-arabic' : ''}>
+                                                <div className="text-xs sm:text-sm font-bold text-gray-900">{isRTL ? 'سنوات' : 'Years'}</div>
+                                                <div className="text-[10px] sm:text-xs text-gray-500">{isRTL ? 'الخبرة' : 'Experience'}</div>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -232,9 +262,9 @@ export default function Hero() {
                         >
                             <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto">
                                 {[
-                                    { value: "17+", label: "Years Experience" },
-                                    { value: "2000+", label: "Professionals Trained" },
-                                    { value: "12+", label: "Centers Founded" },
+                                    { value: isRTL ? "+17" : "17+", label: isRTL ? "سنوات الخبرة" : "Years Experience" },
+                                    { value: isRTL ? "+2000" : "2000+", label: isRTL ? "متخصص تم تدريبهم" : "Professionals Trained" },
+                                    { value: isRTL ? "+12" : "12+", label: isRTL ? "مراكز تأسست" : "Centers Founded" },
                                 ].map((stat, index) => (
                                     <motion.div
                                         key={stat.label}
@@ -255,7 +285,7 @@ export default function Hero() {
                                         >
                                             {stat.value}
                                         </div>
-                                        <div className="text-[10px] sm:text-xs lg:text-sm text-gray-500 font-medium">
+                                        <div className={`text-[10px] sm:text-xs lg:text-sm text-gray-500 font-medium ${isRTL ? 'font-arabic' : ''}`}>
                                             {stat.label}
                                         </div>
                                     </motion.div>
